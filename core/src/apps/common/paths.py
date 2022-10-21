@@ -340,6 +340,7 @@ PATTERN_BIP44_PUBKEY = "m/44'/coin_type'/account'/*"
 # SEP-0005 for non-UTXO-based currencies, defined by Stellar:
 # https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md
 PATTERN_SEP5 = "m/44'/coin_type'/account'"
+PATTERN_BIP46 = "m/45'/coin_type/account/change/address_index"
 
 
 async def validate_path(

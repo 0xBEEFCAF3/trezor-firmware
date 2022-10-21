@@ -8,7 +8,7 @@ from trezor.messages import AuthorizeCoinJoin, GetOwnershipProof, SignTx, Unlock
 
 from apps.common import coininfo
 from apps.common.keychain import get_keychain
-from apps.common.paths import PATTERN_BIP44, PathSchema
+from apps.common.paths import PATTERN_BIP44, PATTERN_BIP46, PathSchema
 
 from . import authorization
 from .common import BITCOIN_NAMES
@@ -135,6 +135,7 @@ def validate_path_against_script_type(
 
     elif coin.segwit and script_type == InputScriptType.SPENDP2SHWITNESS:
         patterns.append(PATTERN_BIP49)
+        patterns.append(PATTERN_BIP46)
         if multisig:
             patterns.append(PATTERN_BIP48_P2SHSEGWIT)
         if coin.slip44 == SLIP44_BITCOIN:
@@ -153,6 +154,7 @@ def validate_path_against_script_type(
 
     elif coin.taproot and script_type == InputScriptType.SPENDTAPROOT:
         patterns.append(PATTERN_BIP86)
+        patterns.append(PATTERN_BIP46)
         patterns.append(PATTERN_SLIP25_TAPROOT)
 
     return any(
@@ -167,6 +169,7 @@ def get_schemas_for_coin(
     patterns = [
         PATTERN_BIP44,
         PATTERN_BIP48_RAW,
+        PATTERN_BIP46,
     ]
 
     # patterns without coin_type field must be treated as if coin_type == 0
