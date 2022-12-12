@@ -337,6 +337,8 @@ PATTERN_SEP5 = "m/44'/coin_type'/account'"
 # SEP-0005 Ledger Live legacy path
 # https://github.com/trezor/trezor-firmware/issues/1749
 PATTERN_SEP5_LEDGER_LIVE_LEGACY = "m/44'/coin_type'/0'/account"
+PATTERN_CASA = "m/45'/[0-1000000]/[0-1000000]/[0-1]/[0-1000000]"
+PATTERN_CASA_EXPORT = "m/45'"
 
 
 async def validate_path(
